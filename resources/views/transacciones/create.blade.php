@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title text-center">Agregar nueva <span>| Transaccion</span></h5>
-                    <form action="{{ route('store') }}" id="formulario-transaccion" method="POST">
+                    <form action="{{ route('transaccionstore') }}" id="formulario-transaccion" method="POST">
                         @csrf
                         @method('POST')
                         <div class="form-group">
@@ -82,7 +82,7 @@
         var proveedorId = $("#proveedorId").val();
 
         $.ajax({
-            url: '{{ route('store') }}',
+            url: '{{ route('transaccionstore') }}',
             method: 'POST',
             data: {
                 _token: $('input[name="_token"]').val(),

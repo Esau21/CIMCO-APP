@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title text-center">Agregar nueva <span>| Transaccion</span></h5>
-                    <form action="{{ route('update', $transaccion->id) }}" id="formulario-transaccion" method="POST">
+                    <form action="{{ route('updatetransaccion', $transaccion->id) }}" id="formulario-transaccion" method="POST">
                         @csrf
                         @method('POST')
                         <div class="form-group">

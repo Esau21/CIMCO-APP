@@ -88,7 +88,10 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('productos') }}">{{ __('Detalles-Transacciones') }}</a>
+                            <a class="nav-link" href="{{ route('details') }}">{{ __('Detalles-Transacciones') }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('productos') }}">{{ __('Inventarios') }}</a>
                         </li>
                         @endguest
                     </ul>

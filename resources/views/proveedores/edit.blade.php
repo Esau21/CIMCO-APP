@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title text-center">Actualizar <span>| proveedores</span></h5>
-                    <form action="{{ route('update', $proveedor->id) }}" id="formulario-proveedor" method="POST">
+                    <form action="{{ route('updateproveedor', $proveedor->id) }}" id="formulario-proveedor" method="POST">
                         @csrf
                         @method('PUT')
                         <div class="form-group">

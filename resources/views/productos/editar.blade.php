@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title text-center">Agregar nuevos <span>| productos</span></h5>
-                    <form action="{{ route('update', $productos->id) }}" id="formulario-producto" method="POST">
+                    <form action="{{ route('updateproducto', $productos->id) }}" id="formulario-producto" method="POST">
                         @csrf
                         @method('PUT')
                         <div class="form-group">

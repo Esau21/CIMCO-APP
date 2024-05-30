@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DetailTransaacionController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\TransaacionController;
@@ -32,25 +33,30 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 //Definimos todas las rutas de nuestros controladores de los productos.
 Route::get('/productos', [ProductController::class, 'index'])->name('productos');
 Route::post('/productos', [ProductController::class, 'obtener']);
-Route::get('/create', [ProductController::class, 'create'])->name('create');
-Route::post('/store', [ProductController::class, 'store'])->name('store');
+Route::get('/create/producto', [ProductController::class, 'create'])->name('createproducto');
+Route::post('/store/producto', [ProductController::class, 'store'])->name('productostore');
 Route::get('/productos/{id}/edit', [ProductController::class, 'edit']);
-Route::put('/productos/{id}', [ProductController::class, 'update'])->name('update');
+Route::put('/productos/{id}', [ProductController::class, 'update'])->name('updateproducto');
 Route::delete('/productos/{id}', [ProductController::class, 'eliminar']);
 
 //Definimos todas las rutas de nuestros controladores de los proveedores.
 Route::get('/proveedores', [ProveedorController::class, 'index'])->name('proveedores');
-Route::get('/create', [ProveedorController::class, 'create'])->name('create');
-Route::post('/store', [ProveedorController::class, 'store'])->name('store');
+Route::get('/create/proveedor', [ProveedorController::class, 'create'])->name('proveedorcreate');
+Route::post('/store/proveedor', [ProveedorController::class, 'store'])->name('proveedorstore');
 Route::get('/proveedor/{id}/edit', [ProveedorController::class, 'edit'])->name('edit');
-Route::put('/proveedores/{id}', [ProveedorController::class, 'update'])->name('update');
+Route::put('/proveedores/{id}', [ProveedorController::class, 'update'])->name('updateproveedor');
 Route::delete('/proveedores/{id}', [ProveedorController::class, 'delete'])->name('eliminar.proveedor');
 
 //Definimos todas las rutas de nuestros controladores de transaaciones.
 Route::get('/transacciones', [TransaacionController::class, 'index'])->name('transaccion');
-Route::get('/create', [TransaacionController::class, 'create'])->name('create');
-Route::post('/store', [TransaacionController::class, 'store'])->name('store');
+Route::get('/create/transaccion', [TransaacionController::class, 'create'])->name('transaccioncreate');
+Route::post('/store/transaccion', [TransaacionController::class, 'store'])->name('transaccionstore');
 Route::get('/transaccion/{id}/edit', [TransaacionController::class, 'edit'])->name('edit');
-Route::put('/transaccion/{id}', [TransaacionController::class, 'update'])->name('update');
+Route::put('/transaccion/{id}', [TransaacionController::class, 'update'])->name('updatetransaccion');
 Route::delete('/trasaccion/{id}', [TransaacionController::class, 'delete'])->name('delete');
+
+//Definimos todas las rutas de nuestros controladores de Detalles-transaaciones.
+Route::get('/detalles_transacciones', [DetailTransaacionController::class, 'index'])->name('details');
+Route::get('/create/details', [DetailTransaacionController::class, 'create'])->name('detailscreate');
+Route::post('/store/detailtransaccion', [DetailTransaacionController::class, 'store'])->name('detailtransaccion');
 

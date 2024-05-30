@@ -8,7 +8,7 @@
                     <div class="card recent-sales overflow-auto">
                         <div class="card-body">
                             <h5 class="card-title">Todos los <span>| Proveedores</span></h5>
-                            <p><a href="{{ route('create') }}" class="btn btn-sm btn-success">Agregar</a></p>
+                            <p><a href="{{ route('proveedorcreate') }}" class="btn btn-sm btn-success">Agregar</a></p>
                             <table id="example" class="table table-borderless datatable">
                                 <thead>
                                     <tr>

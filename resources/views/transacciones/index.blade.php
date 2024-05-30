@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<div class="container-fluid">
+<div class="container">
     <div class="row">
         <div class="col-lg-12">
             <div class="row">
@@ -8,8 +8,9 @@
                     <div class="card recent-sales overflow-auto">
                         <div class="card-body">
                             <h5 class="card-title">Todas las <span>| Transacciones</span></h5>
-                            <p><a href="{{ route('create') }}" class="btn btn-sm btn-success">Agregar</a></p>
-                            <table id="example" class="table table-borderless datatable">
+                            <p><a href="{{ route('transaccioncreate') }}" class="btn btn-sm btn-success">Agregar</a></p>
+                           <div class="col-sm-12">
+                            <table id="example" class="table table-borderless datatable table-bordered table-sm">
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>
@@ -42,6 +43,7 @@
                                     @endforeach
                                 </tbody>
                             </table>
+                           </div>
                         </div>
                     </div>
                 </div>
