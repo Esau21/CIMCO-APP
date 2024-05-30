@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,3 +25,12 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+//Definimos todas las rutas de nuestros controladores.
+Route::get('/productos', [ProductController::class, 'index'])->name('productos');
+Route::post('/productos/all', [ProductController::class, 'obtener']);
+Route::get('/create', [ProductController::class, 'create'])->name('create');
+Route::post('/store', [ProductController::class, 'store'])->name('store');
+Route::get('/productos/{id}/edit', [ProductController::class, 'edit']);
+Route::put('/productos/{id}', [ProductController::class, 'update'])->name('update');
+Route::delete('/productos/{id}', [ProductController::class, 'eliminar']);
