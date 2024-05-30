@@ -2,7 +2,7 @@
 @section('content')
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-8">
+        <div class="col-lg-12">
             <div class="row">
                 <div class="col-12">
                     <div class="card recent-sales overflow-auto">
@@ -50,7 +50,7 @@
     function cargar_todos_los_productos()
     {
         $.ajax({
-            url: '/productos/all',
+            url: '/productos',
             method: 'POST',
             data: {
                 id: 1,

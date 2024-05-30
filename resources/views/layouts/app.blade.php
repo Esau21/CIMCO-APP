@@ -78,6 +78,18 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('productos') }}">{{ __('Productos') }}</a>
                         </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('proveedores') }}">{{ __('Proveedores') }}</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('transaccion') }}">{{ __('Transacciones') }}</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('productos') }}">{{ __('Detalles-Transacciones') }}</a>
+                        </li>
                         @endguest
                     </ul>
                 </div>

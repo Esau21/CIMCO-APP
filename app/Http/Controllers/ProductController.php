@@ -23,7 +23,7 @@ class ProductController extends Controller
     {
         $productos = Product::select('products.*')
             ->orderBy('id', 'ASC')
-            ->paginate();
+            ->paginate(1);
 
         if (request()->ajax()) {
             return response()->json($productos);
