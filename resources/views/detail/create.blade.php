@@ -85,10 +85,10 @@
                 UCC: UCC,
             },
             success: function(response){
-                Swal.fire('La transaccion del producto fue exitosa.', response.message, 'success');
+                Swal.fire('La transaccion del producto fue exitosa las existencias bajaron.', response.message, 'success');
                 setTimeout(() => {
                     window.location.href = "{{ route('details') }}"
-                }, 1000);
+                }, 3000);
             }, 
             error: function(e){
                 if (e.status === 400) {

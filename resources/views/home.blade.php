@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    {{ __('Bienvenidos a mi aplicacion espero sea de su agrado, Creador: Edgar Esau Zelaya Moran.') }}
                 </div>
             </div>
         </div>
