@@ -11,6 +11,5 @@ class Inventario extends Model
 
     protected $fillable = [
         'productId',
-        'cantidad_disponible',
     ];
 }

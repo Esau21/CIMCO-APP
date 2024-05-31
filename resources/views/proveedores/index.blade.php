@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<div class="container-fluid">
+<div class="container">
     <div class="row">
         <div class="col-lg-12">
             <div class="row">
@@ -9,7 +9,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Todos los <span>| Proveedores</span></h5>
                             <p><a href="{{ route('proveedorcreate') }}" class="btn btn-sm btn-success">Agregar</a></p>
-                            <table id="example" class="table table-borderless datatable">
+                            <table id="example" class="table table-borderless datatable table-bordered table-sm">
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>

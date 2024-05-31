@@ -31,9 +31,9 @@
                                             <td class="text-center">{{$d->UCC}}</td>
                                             <td class="text-center">
                                                 <a class="btn btn-outline-info"
-                                                    onclick="EditarTransaccion({{ $d->id }})">Editar</a>
+                                                    onclick="editarDetailTransaccion({{ $d->id }})">Editar</a>
                                                 <a class="btn btn-outline-danger"
-                                                    onclick="deleteTransaccion({{ $d->id }})">Eliminar</a>
+                                                    onclick="deleteDetailsTransaccion({{ $d->id }})">Eliminar</a>
                                             </td>
                                         </tr>
                                         @endforeach
@@ -49,3 +49,48 @@
     {{$detailstrasacciones->links()}}
 </div>
 @endsection
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    function editarDetailTransaccion(id)
+    {
+        window.location.href = '/detail/' + id + '/edit';
+    }
+
+    function deleteDetailsTransaccion(id)
+    {
+        Swal.fire({
+            title: '¿Estás seguro?',
+            text: "¡No podrás revertir esto!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sí, eliminarlo!'
+        }).then((resultado) => {
+            if(resultado.isConfirmed){
+                $.ajax({
+                    url : '/detailtransaccion/' + id,
+                    method: 'DELETE',
+                    data: {
+                        _token: $('meta[name="csrf-token"]').attr('content'),
+                    },
+                    success: function(respuesta)
+                    {
+                        Swal.fire({
+                            title: 'Se elimino la transaccion',
+                            icon: 'success'
+                        });
+                        setTimeout(() => {
+                           location.reload() 
+                        }, 1000);
+                    },
+                    error: function(e)
+                    {
+                        Swal.fire('error', 'No se puede eliminar el detalle de la transaccion', 'error');
+                    }
+                });
+            }
+        });
+    }
+</script>

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->increments('id');
             $table->integer('transaccionId')->unsigned();
             $table->integer('productId')->unsigned();
-            $table->decimal('quantity', 10, 2);
+            $table->float('quantity');
             $table->char('UCC', 12)->unique();
 
 

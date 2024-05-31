@@ -7,40 +7,35 @@
                 <div class="col-12">
                     <div class="card recent-sales overflow-auto">
                         <div class="card-body">
-                            <h5 class="card-title">Todos los <span>| Productos</span></h5>
-                            <p><a href="{{ route('createproducto') }}" class="btn btn-sm btn-success">agregar</a></p>
+                            <h5 class="card-title">Todos los <span>| Inventarios</span></h5>
                             <table id="tabla-contenedora"
                                 class="table table-borderless datatable table-bordered table-sm">
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>
                                         <th scope="col">Nombre</th>
-                                        <th scope="col">Descripcion</th>
                                         <th scope="col">Precio</th>
                                         <th scope="col">Stock</th>
                                         <th scope="col">Operaciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($productos as $p)
+                                    @foreach ($inventarios as $in)
                                     <tr>
-                                        <td>{{ $p->id }}</td>
-                                        <td>{{ $p->nombre }}</td>
-                                        <td>{{ $p->descripcion }}</td>
-                                        <td>${{ number_format($p->precio, 2) }}</td>
+                                        <td>{{ $in->id }}</td>
+                                        <td>{{ $in->nombre }}</td>
+                                        <td>${{ number_format($in->precio, 2) }}</td>
                                         <td>
                                             <span class="badge bg-success 
-                                                        {{ $p->stock >= 20 ? 'bg-success' : 
-                                                        ($p->stock >= 10 ? 'bg-info' : 'bg-danger') 
+                                                        {{ $in->stock >= 20 ? 'bg-success' : 
+                                                        ($in->stock >= 10 ? 'bg-info' : 'bg-danger') 
                                                         }}">
-                                                {{ $p->stock }}
+                                                {{ $in->stock }}
                                             </span>
                                         </td>
                                         <td>
-                                            <a onclick="editarProducto({{ $p->id }})"
+                                            <a onclick="editarProducto({{ $in->id }})"
                                                 class="btn btn-sm btn-outline-info">Editar</a>
-                                            <a onclick="deleteProduct({{ $p->id }})"
-                                                class="btn btn-sm btn-outline-danger">Eliminar</a>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -53,7 +48,7 @@
         </div>
     </div>
     <div class="mt-3">
-        {{ $productos->links() }}
+        {{ $inventarios->links() }}
     </div>
 </div>
 @endsection

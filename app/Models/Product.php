@@ -16,4 +16,16 @@ class Product extends Model
         'precio',
         'stock'
     ];
+
+   /* Definimos una funcion para hacer que el stock en 
+    nuestra tabla de productos baje cuando se haga una nuevo detalle de transaccion */
+    public function reduceStock($quantity)
+    {
+        if ($this->stock < $quantity) {
+            throw new \Exception('Stock insuficiente para el producto');
+        }
+
+        $this->stock -= $quantity;
+        $this->save();
+    }
 }

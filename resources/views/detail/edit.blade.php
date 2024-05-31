@@ -6,7 +6,7 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title text-center">Agregar nueva <span>| Transaccion</span></h5>
-                    <form action="{{ route('detailtransaccion') }}" id="formulario-detailtransaccion" method="POST">
+                    <form action="{{ route('updatedetailT', $detailT->id) }}" id="formulario-detailtransaccion" method="POST">
                         @csrf
                         @method('POST')
                         <div class="form-group">
@@ -14,7 +14,7 @@
                             <select name="transaccionId" id="transaccionId" class="form-control">
                                 <option value="Elegir">Elegir</option>
                                 @foreach ($transaccion as $t)
-                                    <option value="{{ $t['id'] }}">{{$t->fecha}}</option>
+                                <option value="{{ $t['id'] }}">{{$t->fecha}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -23,25 +23,22 @@
                             <select name="productId" id="productId" class="form-control">
                                 <option value="Elegir">Elegir</option>
                                 @foreach ($productos as $p)
-                                    <option value="{{ $p['id'] }}">{{$p->nombre}}</option>
+                                <option value="{{ $p['id'] }}">{{$p->nombre}}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="form-group">
                             <label>Cantidad</label>
-                            <input type="text" name="quantity" id="quantity" class="form-control" placeholder="Ingresa la cantidad">
+                            <input type="text" name="quantity" id="quantity" class="form-control"
+                                placeholder="Ingresa la cantidad" value="{{$detailT->quantity}}">
                         </div>
                         <div class="form-group">
                             <label>Ucc</label>
-                            <input type="text" name="UCC" id="UCC" class="form-control" placeholder="Ingresa un UCC de 12" maxlength="12">
-                            @error('UCC')
-                                <span class="text-danger">
-                                    {{$message}}
-                                </span>
-                            @enderror
+                            <input type="text" name="UCC" id="UCC" class="form-control"
+                                placeholder="Ingresa un UCC de 12" value="{{$detailT->UCC}}" maxlength="12">
                         </div>
                         <div class="text-center pt-2">
-                            <button type="submit" class="btn btn-sm btn-success">Agregar</button>
+                            <button type="submit" class="btn btn-sm btn-success">Actualizar</button>
                         </div>
                     </form>
                 </div>
@@ -55,14 +52,16 @@
 
 <script>
     $(document).ready(function(){
+        console.log('Hola');
         $("#formulario-detailtransaccion").submit(function(e){
             e.preventDefault();
-            agree_data_form();
-        });
+            update_data_form();
+        })
     });
 
-    function agree_data_form()
+    function update_data_form()
     {
+        var id = {{$detailT->id}};
         var transaccionId = $("#transaccionId").val();
         var productId = $("#productId").val();
         var quantity = $("#quantity").val();
@@ -75,27 +74,24 @@
         }
 
         $.ajax({
-            url: '{{ route('detailtransaccion') }}',
+            url: '/detailt/' + id,
             method: 'POST',
             data: {
                 _token: $('input[name="_token"]').val(),
+                _method: 'PUT',
                 transaccionId: transaccionId,
                 productId: productId,
                 quantity: quantity,
                 UCC: UCC,
             },
-            success: function(response){
-                Swal.fire('La transaccion del producto fue exitosa.', response.message, 'success');
+            success: function(respuesta){
+                Swal.fire('Transaccion actualizada correctamente subieron las existencias de los productos.');
                 setTimeout(() => {
                     window.location.href = "{{ route('details') }}"
                 }, 1000);
             }, 
             error: function(e){
-                if (e.status === 400) {
-                    Swal.fire('Error', e.responseJSON.message, 'error');
-                } else {
-                    Swal.fire('Error', 'Ha ocurrido un error.', 'error');
-                }
+                console.log(e);
             }
         });
     }

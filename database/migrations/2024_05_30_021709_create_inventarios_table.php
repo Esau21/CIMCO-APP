@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('inventarios', function (Blueprint $table) {
             $table->id();
             $table->integer('productId')->unsigned();
-            $table->integer('cantidad_disponible');
 
 
             $table->foreign('productId')->references('id')->on('products');

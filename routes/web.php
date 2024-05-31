@@ -1,10 +1,10 @@
 <?php
 
 use App\Http\Controllers\DetailTransaacionController;
+use App\Http\Controllers\InventarioController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\TransaacionController;
-use App\Models\Transaccion;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,7 +32,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 //Definimos todas las rutas de nuestros controladores de los productos.
 Route::get('/productos', [ProductController::class, 'index'])->name('productos');
-Route::post('/productos', [ProductController::class, 'obtener']);
 Route::get('/create/producto', [ProductController::class, 'create'])->name('createproducto');
 Route::post('/store/producto', [ProductController::class, 'store'])->name('productostore');
 Route::get('/productos/{id}/edit', [ProductController::class, 'edit']);
@@ -59,4 +58,11 @@ Route::delete('/trasaccion/{id}', [TransaacionController::class, 'delete'])->nam
 Route::get('/detalles_transacciones', [DetailTransaacionController::class, 'index'])->name('details');
 Route::get('/create/details', [DetailTransaacionController::class, 'create'])->name('detailscreate');
 Route::post('/store/detailtransaccion', [DetailTransaacionController::class, 'store'])->name('detailtransaccion');
+Route::get('/detail/{id}/edit', [DetailTransaacionController::class,'edit'])->name('edit');
+Route::put('/detailt/{id}', [DetailTransaacionController::class, 'update'])->name('updatedetailT');
+Route::delete('/detailtransaccion/{id}', [DetailTransaacionController::class, 'delete'])->name('deletedetail');
+
+//Definimos todas las rutas de nuestros controladores de Inventarios.
+Route::get('/inventarios', [InventarioController::class, 'index'])->name('inventarios');
+
 

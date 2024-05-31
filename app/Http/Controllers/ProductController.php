@@ -11,25 +11,16 @@ class ProductController extends Controller
     public function index()
     {
 
-        return $this->obtener();
+        $productos = Product::select('products.*')
+        ->orderBy('id', 'ASC')
+        ->paginate(5);
+
+        return view('productos.index', compact('productos'));
     }
 
     public function paginationView()
     {
         return 'bootstrap';
-    }
-
-    public function obtener()
-    {
-        $productos = Product::select('products.*')
-            ->orderBy('id', 'ASC')
-            ->paginate();
-
-        if (request()->ajax()) {
-            return response()->json($productos);
-        }
-
-        return view('productos.index', compact('productos'));
     }
 
     public function create()
